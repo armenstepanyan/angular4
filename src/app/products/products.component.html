@@ -1,3 +1,61 @@
-<p>
-  products works!
-</p>
+<div class="container">
+    <div class="col-md-12">
+        <h1>Product List</h1>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price | currency:'USD':true:'1.0-2' }}</td>
+                <td>
+                    <button class="btn btn-info"
+                            (click)="showEditProductForm(product)">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger"
+                            (click)="removeProduct(product.id)">
+                        <i class="fa fa-minus"></i>
+                    </button>
+
+                    <button
+                            class="btn btn-info"
+                            [routerLink]="['/detail', product.id]">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <button class="btn btn-success"
+                (click)="showAddProductForm()"
+        ><i class="fa fa-plus"></i></button>
+        <br/>
+        <br/>
+
+
+        <app-form
+                *ngIf="showForm"
+                [product]="currentProduct"
+                [isNewProduct] = "isNewProduct"
+                [callback] = "hideForm"
+                [updateList] = "updateProductList"
+        >
+
+        </app-form>
+
+
+
+    </div>
+</div>

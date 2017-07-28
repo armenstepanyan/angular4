@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
 import { Product } from '../products/product';
 import {ProductService} from "../products/product.service";
 
@@ -11,7 +11,9 @@ import {ProductService} from "../products/product.service";
 export class FormComponent implements OnInit {
   @Input() product: Product;
   @Input() isNewProduct: boolean;
-  @Input() showForm: boolean;
+  @Input() callback: Function;
+  @Input() updateList: Function;
+
   productCopy: Product ;
 
   constructor(private _productService: ProductService) { }
@@ -22,19 +24,19 @@ export class FormComponent implements OnInit {
   }
 
   saveProduct(product: Product){
-    if(this.isNewProduct){
-      this._productService.addProduct(product);
-
-    }
-    else{
-      this._productService.updateProduct(product);
-    }
-    this.showForm = false;
+    debugger;
+      this._productService.addProduct(product).then(resp => {
+        if(resp.success){
+            this.updateList(resp.data);
+        }
+        else{
+          //display error
+        }
+      });
   }
 
   cancel(){
-    //this.product = this.productCopy;
-    this.showForm = false;
+    this.callback();
   }
 
 }
