@@ -1,0 +1,60 @@
+<form>
+    <h2>{{ isNewProduct ? 'Add New ' : 'Edit' }}  Product</h2>
+    <div class="form-group">
+        <label for="name">Product Id</label>
+        <input
+                type="number"
+                class="form-control"
+                id="productId"
+                placeholder="Id"
+                [(ngModel)]="product.id" name="id"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Name"
+                [(ngModel)]="product.name" name="name"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="name">Description</label>
+        <input
+                type="text"
+                class="form-control"
+                id="description"
+                placeholder="Description"
+                [(ngModel)]="product.description" name="description"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="name">Price</label>
+        <input
+                type="number"
+                class="form-control"
+                id="price"
+                placeholder="Price"
+                [(ngModel)]="product.price" name="price"
+        >
+    </div>
+
+    <div class="form-group">
+        <button type="button"
+                class="btn btn-primary"
+                (click)="saveProduct(product)">Submit
+        </button>
+        <button type="button"
+                class="btn btn-warning"
+                (click) = "cancel()"
+        >Cancel
+        </button>
+    </div>
+
+
+</form>
