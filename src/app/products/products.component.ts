@@ -3,6 +3,7 @@ import {Product} from "./product";
 import {ProductService} from "./product.service";
 import { Router } from '@angular/router';
 import { FilterPipe } from '../filter.pipe';
+import { SearchFilterPipe } from '../search-filter.pipe';
 
 @Component({
   selector: 'app-products',
@@ -15,6 +16,7 @@ export class ProductsComponent implements OnInit {
   showForm: boolean = false;
   isNewProduct: boolean;
   currentProduct: any = {};
+  term: string;
 
   private router: Router;
 
@@ -59,6 +61,7 @@ export class ProductsComponent implements OnInit {
   updateProductList = (products) => {
     this.products = products;
     this.hideForm();
+    this.term = '';
   }
 
 

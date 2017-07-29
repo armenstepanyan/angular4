@@ -9,6 +9,7 @@ import { ProductService } from './products/product.service';
 import { FormComponent } from './form/form.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
 import { FilterPipe } from './filter.pipe';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FilterPipe } from './filter.pipe';
     NavComponent,
     FormComponent,
     ProductItemComponent,
-    FilterPipe
+    FilterPipe,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

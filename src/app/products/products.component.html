@@ -1,57 +1,74 @@
 <div class="container">
-    <div class="col-md-12">
-        <h1>Product List</h1>
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-            <tr>
-                <th class="text-center">ID</th>
-                <th class="text-center">Name</th>
-                <th class="text-center">Description</th>
-                <th class="text-center">Price</th>
-                <th class="text-center">&nbsp;</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let product of products">
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description | filter}}</td>
-                <td>{{ product.price | currency:'USD':true:'1.0-2' }}</td>
-                <td>
-                    <button class="btn btn-info"
-                            [routerLink]="['/detail', product.id]"
-                            >
-                        <i class="fa fa-edit"></i>
-                    </button>
-                    <button class="btn btn-danger"
-                            (click)="removeProduct(product.id)">
-                        <i class="fa fa-minus"></i>
-                    </button>
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Product List</h1>
+        </div>
+        <div class="col-md-4">
+              <input 
+                    type="text" 
+                    class="form-control" 
+                    style="margin-top:30px"
+                    placeholder="Search"
+                    [(ngModel)] = "term"
 
-                </td>
-            </tr>
-            </tbody>
-        </table>
+            >  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let product of products | searchFilter:term">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description | filter}}</td>
+                    <td>{{ product.price | currency:'USD':true:'1.0-2' }}</td>
+                    <td>
+                        <button class="btn btn-info"
+                                [routerLink]="['/detail', product.id]"
+                                >
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn btn-danger"
+                                (click)="removeProduct(product.id)">
+                            <i class="fa fa-minus"></i>
+                        </button>
 
-
-        <button class="btn btn-success"
-                (click)="showAddProductForm()"
-                [disabled] = "showForm"
-        ><i class="fa fa-plus"></i> &nbsp;  New Product</button>
-        <br/>
-        <br/>
-
-
-        <app-form
-                *ngIf="showForm"
-                [product]="currentProduct"               
-                [callback] = "hideForm"
-                [updateList] = "updateProductList"
-        >
-
-        </app-form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
 
+            <button class="btn btn-success"
+                    (click)="showAddProductForm()"
+                    [disabled] = "showForm"
+            ><i class="fa fa-plus"></i> &nbsp;  New Product</button>
+            <br/>
+            <br/>
 
+
+            <app-form
+                    *ngIf="showForm"
+                    [product]="currentProduct"               
+                    [callback] = "hideForm"
+                    [updateList] = "updateProductList"
+            >
+
+            </app-form>
+
+
+
+        </div>
     </div>
 </div>
