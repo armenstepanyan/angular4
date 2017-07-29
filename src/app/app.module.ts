@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app.routing';
 import { ProductService } from './products/product.service';
 import { FormComponent } from './form/form.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
-import { FilterPipe } from './filter.pipe';
-import { SearchFilterPipe } from './search-filter.pipe';
+import { FilterPipe } from './filters/filter.pipe';
+import { SearchFilterPipe } from './filters/search-filter.pipe';
 
 
 @NgModule({

@@ -2,8 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {Product} from "./product";
 import {ProductService} from "./product.service";
 import { Router } from '@angular/router';
-import { FilterPipe } from '../filter.pipe';
-import { SearchFilterPipe } from '../search-filter.pipe';
+import { FilterPipe } from '../filters/filter.pipe';
+import { SearchFilterPipe } from '../filters/search-filter.pipe';
 
 @Component({
   selector: 'app-products',
