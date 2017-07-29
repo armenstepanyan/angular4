@@ -1,51 +1,80 @@
-<form>
-    <h2>{{ isNewProduct ? 'Add New ' : 'Edit' }}  Product</h2>
-    <div class="form-group">
-        <label for="name">Product Id</label>
-        <input
-                type="number"
-                class="form-control"
-                id="productId"
-                placeholder="Id"
-                [(ngModel)]="product.id" name="id"
-        >
-    </div>
-
-    <div class="form-group">
+<div class="container" *ngIf="product">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{ isNewProduct ? 'Add new ' : 'Edit'  }}  Product</h2>
+  <form #productForm="ngForm" >
+      <div class="form-group">
         <label for="name">Name</label>
         <input
-                type="text"
-                class="form-control"
-                id="name"
-                placeholder="Name"
-                [(ngModel)]="product.name" name="name"
+            type="text"
+            required minlength="4" maxlength="24"
+            class="form-control"
+            id="name"
+            placeholder="Name"
+            name="name"
+            [(ngModel)]="product.name"             
+            #name="ngModel"
         >
-    </div>
+ 
+        <div *ngIf="name.errors && (name.dirty || name.touched)"
+             class="alert alert-danger">
+            <div [hidden]="!name.errors.required">
+              Name is required
+            </div>
+            <div [hidden]="!name.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+            <div [hidden]="!name.errors.maxlength">
+              Name cannot be more than 24 characters long.
+            </div>
+        </div>
+      </div>
 
-    <div class="form-group">
+      <div class="form-group">
         <label for="name">Description</label>
         <input
-                type="text"
-                class="form-control"
-                id="description"
-                placeholder="Description"
-                [(ngModel)]="product.description" name="description"
+            type="text"
+            required 
+            class="form-control"
+            id="description"
+            placeholder="Description"
+            name="description"
+            [(ngModel)]="product.description"             
+            #description="ngModel"
         >
-    </div>
+ 
+        <div *ngIf="description.errors && (description.dirty || description.touched)"
+             class="alert alert-danger">
+            <div [hidden]="!description.errors.required">
+              Description is required
+            </div>           
+        </div>
+      </div>
 
-    <div class="form-group">
+        <div class="form-group">
         <label for="name">Price</label>
         <input
-                type="number"
-                class="form-control"
-                id="price"
-                placeholder="Price"
-                [(ngModel)]="product.price" name="price"
+            type="number"
+            required 
+            class="form-control"
+            id="price"
+            placeholder="Price"
+            [(ngModel)]="product.price" 
+            name="price"
+            #price="ngModel"
         >
-    </div>
+ 
+        <div *ngIf="price.errors && (price.dirty || price.touched)"
+             class="alert alert-danger">
+            <div [hidden]="!price.errors.required">
+              Price is required
+            </div>           
+        </div>
+      </div>
 
-    <div class="form-group">
+     <div class="form-group">
         <button type="button"
+                [disabled]="!productForm.form.valid"
                 class="btn btn-primary"
                 (click)="saveProduct(product)">Submit
         </button>
@@ -56,5 +85,7 @@
         </button>
     </div>
 
-
-</form>
+    </form>
+        </div>
+    </div>
+</div>

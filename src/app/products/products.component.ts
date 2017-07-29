@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Product} from "./product";
 import {ProductService} from "./product.service";
 import { Router } from '@angular/router';
+import { FilterPipe } from '../filter.pipe';
 
 @Component({
   selector: 'app-products',
@@ -57,6 +58,7 @@ export class ProductsComponent implements OnInit {
 
   updateProductList = (products) => {
     this.products = products;
+    this.hideForm();
   }
 
 

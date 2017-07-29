@@ -15,11 +15,12 @@
             <tr *ngFor="let product of products">
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
+                <td>{{ product.description | filter}}</td>
                 <td>{{ product.price | currency:'USD':true:'1.0-2' }}</td>
                 <td>
                     <button class="btn btn-info"
-                            (click)="showEditProductForm(product)">
+                            [routerLink]="['/detail', product.id]"
+                            >
                         <i class="fa fa-edit"></i>
                     </button>
                     <button class="btn btn-danger"
@@ -27,11 +28,6 @@
                         <i class="fa fa-minus"></i>
                     </button>
 
-                    <button
-                            class="btn btn-info"
-                            [routerLink]="['/detail', product.id]">
-                        Edit
-                    </button>
                 </td>
             </tr>
             </tbody>
@@ -40,15 +36,15 @@
 
         <button class="btn btn-success"
                 (click)="showAddProductForm()"
-        ><i class="fa fa-plus"></i></button>
+                [disabled] = "showForm"
+        ><i class="fa fa-plus"></i> &nbsp;  New Product</button>
         <br/>
         <br/>
 
 
         <app-form
                 *ngIf="showForm"
-                [product]="currentProduct"
-                [isNewProduct] = "isNewProduct"
+                [product]="currentProduct"               
                 [callback] = "hideForm"
                 [updateList] = "updateProductList"
         >

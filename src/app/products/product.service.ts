@@ -7,15 +7,15 @@ export class ProductService{
   pItems = [
     {
       id: 1,
-      name: 'Scissors',
-      description: 'some description',
-      price: 4.99
+      name: 'iPhone 7',
+      description: 'iPhone 7 now has the best performance and battery life ever, as well as new finishes, water resistance, and stereo speakers.',
+      price: 847.99
     },
     {
       id: 2,
-      name: 'Test',
-      description: 'some test description',
-      price: 6.4
+      name: 'Samsung Galaxy S7',
+      description: 'Experience the Galaxy S7 & Galaxy S7 edge water resistant phones and discover features and specs like amazing images, enhanced cameras and more',
+      price: 729.66
     }
   ];
 
@@ -23,7 +23,8 @@ export class ProductService{
     return Promise.resolve(this.pItems);
   }
 
-  addProduct(product: Product) : Promise<any>{
+  addProduct(product: Product) : Promise<any>{    
+    product.id = Math.floor(100 * Math.random());
     this.pItems.push(product);
     let resp = {
       data: this.pItems,

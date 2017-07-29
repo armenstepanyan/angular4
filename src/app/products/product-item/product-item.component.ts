@@ -7,7 +7,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: 'app-products-item',
-    templateUrl: './product-item.component.html',
+    //templateUrl: './product-item.component.html',
+    templateUrl: '../../form/form.component.html',
     styleUrls: []
 })
 
@@ -33,8 +34,11 @@ export class ProductItemComponent implements OnInit {
         });
     }
 
-    goBack(){
+ /*   goBack(){
         this.location.back();
+    }*/
+    cancel(){
+        this.router.navigateByUrl('/products');
     }
 
     saveProduct(product: Product){

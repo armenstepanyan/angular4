@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app.routing';
 import { ProductService } from './products/product.service';
 import { FormComponent } from './form/form.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProductItemComponent } from './products/product-item/product-item.compo
     ProductsComponent,
     NavComponent,
     FormComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
