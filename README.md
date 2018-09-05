@@ -19,3 +19,5 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. Or just r
 * **filters**   contains used filters 
 * **nav**       Navigation bar 
 * **products**  contains `Produst` component
+
+![screenshot_1](https://user-images.githubusercontent.com/26027467/45084506-306ae780-b107-11e8-89c9-e45118dcf43d.png)
